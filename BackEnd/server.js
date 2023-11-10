@@ -4,9 +4,11 @@ const app = express();
 // Define the port number the server will listen on.
 const port = 4000;
 
+// Import and use the 'cors' middleware to enable Cross-Origin Resource Sharing.
 const cors = require('cors');
 app.use(cors());
 
+// Middleware to handle CORS headers for all routes.
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); 
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); 
@@ -15,29 +17,31 @@ app.use(function(req, res, next) {
     next();
 });
 
-const bodyParser = require('body-parser');
 // Import and use 'body-parser' middleware to handle request body data.
+const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-
+// Handle POST requests to the '/api/books' endpoint.
 app.post('/api/books', (req, res) => {
     // Send a generic "Hello POST" response.
     console.log(req.body);
+    // Send a generic "Hello POST" response.
     res.send("Hello POST");
 });
 
-
-
-
+// Handle GET requests to the root ('/') endpoint.
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-
+// Handle GET requests to the '/api/books' endpoint.
 app.get('/api/books', (req, res) => 
 {
+     // Sample book data.
     const data = 
     [
     {
